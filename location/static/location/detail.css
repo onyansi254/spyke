@@ -1,0 +1,51 @@
+/* Basic styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive styles */
+  @media only screen and (max-width: 768px) {
+    body {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    .details-container {
+      max-width: 300px;
+    }
+  }
+  
+  /* Details container */
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  
+  /* Detail labels */
+  .details-container p {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Location data */
+  .details-container span {
+    font-style: italic;
+    color: #333;
+  }
+  

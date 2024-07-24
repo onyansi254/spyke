@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location Details</title>
+  <link rel="stylesheet" href="{% static 'location/style.css' %}">
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // Retrieve locationId using a script tag to avoid syntax issues
+      const locationIdElement = document.getElementById('location-id');
+      const locationId = locationIdElement ? locationIdElement.textContent : null;
+
+      function updateLocation() {
+        fetch(`/location/${locationId}/data/`)
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('latitude').innerText = data.latitude;
+            document.getElementById('longitude').innerText = data.longitude;
+          });
+      }
+
+      // Update location data every 5 seconds
+      if (locationId) {
+        setInterval(updateLocation, 5000);
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>Location Details</h1>
+  <div class="details-container">
+    <p>Phone Number: {{ location.phone_number }}</p>
+    <p>Latitude: <span id="latitude">{{ location.latitude }}</span></p>
+    <p>Longitude: <span id="longitude">{{ location.longitude }}</span></p>
+    <p>Timestamp: {{ location.timestamp }}</p>
+  </div>
+
+  <!-- Use a script tag to safely embed the location ID -->
+  <script id="location-id" type="application/json">
+    {{ location.id|json_script:"location-id" }}
+  </script>
+</body>
+</html>

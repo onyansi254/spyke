@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Track Phone Number</title>
+  <link rel="stylesheet" href="{% static 'location/style.css' %}">
+</head>
+<body>
+  <h1>Track Phone Number</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Track</button>
+  </form>
+</body>
+</html>
